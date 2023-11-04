@@ -19,14 +19,9 @@ void setup() {
   }
 
   pinMode(13, INPUT_PULLUP); // Start button
-
   // The following line primes the random number generator.
   // It assumes a floating pin (disconnected):
   randomSeed(analogRead(4));
-}
-
-void displayScore() {
-  // Your display score code here
 }
 
 void lightLed(byte ledIndex, int duration =300) {
@@ -78,10 +73,6 @@ bool checkUserSequence() {
   return true;
 }
 
-void playLevelUpSound() {
-  // Your level up sound code here
-}
-
 void loop() {
   if (digitalRead(13) == LOW && !gameInProgress) {
     gameInProgress = true;
@@ -93,7 +84,7 @@ void loop() {
       gameSequence[gameIndex] = random(0, 4);
       gameIndex++;
       if (gameIndex > MAX_GAME_LENGTH){
-         gameOver();
+         gameOver(); // when turn to 4 end the game
        } 
       playSequence();
       if (!checkUserSequence()) {
